@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DatingApp.API.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +13,12 @@ namespace DatingApp.API.Controllers
     // Notice: [controller] is just a placeholder for 'values',
     // so it's replaced as such in the url. .Net gets 'values' from
     // our class name 'ValuesController' and knows to remove the 'Controller' part. 
+
+    // SIDENOTE: All controllers inherit from ControllerBase, which gives us access to 
+    // things like HTTP responses and Actions we can use inside our controllers. Angular
+    // provides us View (MVC) support. The initial structure of our controller will use the 
+    // attribute routing ([Route("api/[controller]")]) and [ApiController].
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase
